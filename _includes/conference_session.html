@@ -1,0 +1,27 @@
+<div class="conference-session">
+  <div class="session-info">
+    {{ session.start }}
+    <span class="track-{{ include.track }}">Track {{ include.track }}</span>
+  </div>
+  <div class="session-body">
+    <h3>{{ session.title }}</h3>
+    {% if session.summary %}
+      <p class="session-summary">
+        {{ session.summary }}
+      </p>
+    {% endif %}
+    <div class="speakers">
+      {% if session.speaker[0] %}
+        {% for speaker in session.speaker %}
+          <span class="speaker">
+            {{ speaker }}
+          </span>
+        {% endfor %}
+      {% else %}
+        <span class="speaker">
+          {{ session.speaker }}
+        </span>
+      {% endif %}
+    </div>
+  </div>
+</div>

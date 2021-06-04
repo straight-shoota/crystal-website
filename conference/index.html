@@ -1,0 +1,43 @@
+---
+title: Crystal 1.0 Conference
+sessions:
+- title: Welcome
+  summary: Join us to go over the agenda and get ready for the conference
+  start: "12:30"
+  end: "13:00"
+- title: TBD
+  speaker: matz
+  start: "13:00"
+  end: "13:30"
+- title: Crystal 1.0 is out - What's next?
+  speaker: beta-ziliani
+  start: "13:30"
+  end: "14:00"
+- title: Break
+-
+  - title: How to build powerful reactive web apps with Crystal and Svelte
+    speaker: Noah Lehman-Haupt
+    start: "15:30"
+    end: "15:45"
+  - title: "Crystal in the Cloud: A cloud-native journey"
+    speaker: [Taylor Carpenter, Will Harris]
+    start: "15:30"
+    end: "15:45"
+---
+
+<div class="conference-session-list">
+  {% for slot in page.sessions %}
+    <div class="conference-slot">
+      {% if slot.title == "Break" %}
+        <div class="conference-sessions-break">Break</div>
+      {% elsif slot.title %}
+        {% assign session = slot %}
+        {% include conference_session.html track=1 %}
+      {% else %}
+        {% for session in slot %}
+          {% include conference_session.html track=forloop.index %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

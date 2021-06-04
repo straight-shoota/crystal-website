@@ -1,0 +1,50 @@
+.conference-session-list {
+  display: flex;
+  flex-direction: column;
+
+  .conference-slot {
+    display: flex;
+
+    .conference-session {
+      margin: 1em;
+      width: 33%;
+
+      &:first-child:last-child {
+        width: 100%;
+      }
+    }
+  }
+
+  .conference-sessions-break {
+    font-size: 2rem;
+    color: #bbb;
+    margin: 1rem;
+    text-transform: uppercase;
+  }
+}
+
+.conference-session {
+  display: flex;
+}
+
+.session-info {
+  display: flex;
+  flex-direction: column;
+  padding-right: .4em;
+
+  .track-1, .track-2 {
+    font-size: 64%;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}
+
+.session-body {
+  > h3 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+  .speaker {
+    font-size: 1.2rem;
+  }
+}
