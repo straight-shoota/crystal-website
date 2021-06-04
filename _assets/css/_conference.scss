@@ -32,7 +32,7 @@
   flex-direction: column;
   padding-right: .4em;
 
-  .track-1, .track-2 {
+  .track-1, .track-2, .track-3 {
     font-size: 64%;
     text-transform: uppercase;
     white-space: nowrap;
@@ -46,5 +46,17 @@
   }
   .speaker {
     font-size: 1.2rem;
+  }
+}
+
+.speaker {
+  .github_handle {
+    font-size: 1rem;
+    i {
+      transform: scale(0.7);
+      opacity: 0.6;
+      margin-right: -5px;
+      margin-top: -3px;
+    }
   }
 }

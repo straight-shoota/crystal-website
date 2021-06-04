@@ -1,0 +1,10 @@
+<div class="speaker">
+  {% if speaker.name %}
+    {{ speaker.name }}
+    {% if speaker.github %}
+      <span class="github_handle"><a href="https://github.com/{{ speaker.github }}" title="GitHub profile"><i class="extra-icons github"></i> {{ speaker.github }}</a></span>
+    {% endif %}
+  {% else %}
+    {{ speaker }}
+  {% endif %}
+</div>
