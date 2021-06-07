@@ -27,8 +27,20 @@
 .conference-slot-info {
   flex-basis: 100%;
   margin: 0 1rem;
+  margin-top: 1rem;
   font-size: 1.2rem;
   font-weight: bold;
+
+  ::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 1.7em;
+    margin-top: -1.7em;
+    background-color: rgba(0,0,0,3%);
+  }
 }
 
 .conference-session {
