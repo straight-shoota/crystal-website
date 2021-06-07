@@ -1,6 +1,6 @@
 <div class="conference-session">
   <div class="session-info">
-    {{ session.start }}
+    <time class="local-time" datetime="2021-07-08T{{ session.start }}+00:00" title="2021-07-08 {{ session.start }} UTC">{{ session.start }}</time>
     <span class="track-{{ include.track }}">Track {{ include.track }}</span>
   </div>
   <div class="session-body">

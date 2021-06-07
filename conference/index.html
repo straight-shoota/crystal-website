@@ -60,3 +60,19 @@ sessions:
     </div>
   {% endfor %}
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var locale = "default";
+  var options = {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+    hour: 'numeric', minute: 'numeric', timeZoneName: 'short'};
+  var titleFormat = new Intl.DateTimeFormat(locale, options);
+  var textFormat = new Intl.DateTimeFormat(locale, {hour: "numeric", minute: "numeric"});
+
+  document.querySelectorAll("time.local-time").forEach(function(elem){
+    var date = new Date(elem.dateTime);
+    elem.innerText = textFormat.format(date);
+    elem.title = titleFormat.format(date);
+  })
+})
+</script>
