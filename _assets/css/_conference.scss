@@ -41,6 +41,11 @@
     margin-top: -1.7em;
     background-color: rgba(0,0,0,3%);
   }
+
+  time > small {
+    font-size: inherit;
+    font-weight: normal;
+  }
 }
 
 .conference-session {
