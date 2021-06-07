@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   document.querySelectorAll("time.local-time").forEach(function(elem){
     var date = new Date(elem.dateTime);
-    elem.innerText = textFormat.format(date);
+    elem.innerText = textFormat.format(date) + " (" + textFormat.resolvedOptions().timeZone + ")";
     elem.title = titleFormat.format(date);
   })
 })
