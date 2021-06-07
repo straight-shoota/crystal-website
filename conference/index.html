@@ -1,65 +1,49 @@
 ---
 title: Crystal 1.0 Conference
-sessions:
-- title: Welcome
-  summary: Join us to go over the agenda and get ready for the conference
-  start: "12:30"
-  end: "13:00"
-- title: TBD
-  speaker:
-    name: Yukihiro Matsumoto
-    github: matz
-  start: "13:00"
-  end: "13:30"
-- title: Crystal 1.0 is out - What's next?
-  speaker:
-    name: Beta Ziliani
-    github: beta-ziliani
-  start: "13:30"
-  end: "14:00"
-- title: Break
--
-  - title: How to build powerful reactive web apps with Crystal and Svelte
-    speaker: Noah Lehman-Haupt
-    start: "15:30"
-    end: "15:45"
-  - title: "Crystal in the Cloud: A cloud-native journey"
-    speaker: [Taylor Carpenter, Will Harris]
-    start: "15:30"
-    end: "15:45"
-  - title: "Start 'Crystalizing' Your Security Testing"
-    speaker: Bar Hofesh
-    start: "15:30"
--
-  - title: Crysterm - Building Console Apps with Crystal
-    speaker: Davor Ocelic
-    start: "15:45"
--
-  - title: "Saving lives with Crystal"
-    speaker: Peter Schols
-    start: "16:00"
-  - title: "Native GUI development with HTML-CSS-JS"
-    speaker: "Giorgi Kavrelishivili"
-    start: "16:00"
-
 ---
 
 <div class="conference-session-list">
-  {% for slot in page.sessions %}
-    <div class="conference-slot">
-      {% if slot.title == "Break" %}
-        <div class="conference-sessions-break">Break</div>
-      {% elsif slot.title %}
-        {% assign session = slot %}
-        {% include conference_session.html track=1 %}
-      {% else %}
-        {% for session in slot %}
-          {% include conference_session.html track=forloop.index %}
-        {% endfor %}
-      {% endif %}
+  {% for session in site.data.conference_talks %}
+    {% if session["Session"] contains "Break: " %}
+    {% else %}
+      {% if session["Start time"] != lastStartTime %}
+        {% if lastStartTime %}
     </div>
+          {% if session["Start time"] != lastEndTime %}
+    <div class="conference-sessions-break">Break</div>
+          {% endif %}
+        {% endif %}
+    <div class="conference-slot">
+      <div class="conference-slot-info">
+        <time class="local-time" datetime="2021-07-08T{{ session["Start time"] }}+00:00" title="2021-07-08 {{ session["Start time"] }} UTC">{{ session["Start time"] }}</time>
+      </div>
+      {% endif %}
+      {% assign lastStartTime = session["Start time"] %}
+      {% assign lastEndTime = session["End time"] %}
+      <div class="conference-session">
+        <!--span class="track-{{ include.track }}">Track {{ include.track }}</span-->
+        <h3>
+          {{ session["Session"] }}
+          {% if session["Theme"] %}
+            <span class="theme theme--{{ session["Theme"] | slugify }}">{{ session["Theme"] }}</span>
+          {% endif %}
+        </h3>
+
+        {% if session["Speaker picture"] %}
+          {% assign parts = session["Speaker picture"] | split: ' (' %}
+          {% assign parts = parts[1] | split: ')' %}
+          <img class="speaker-image" src="{{ parts[0] }}" />
+        {% endif %}
+
+        <p class="session-summary">
+          {{ session["Summary"] | default: "Lorem ipsum dolor sit amet consectuit adolescit elim. "}}
+        </p>
+      </div>
+    {% endif %}
   {% endfor %}
+  </div>
 </div>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   var locale = "default";

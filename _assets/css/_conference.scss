@@ -6,12 +6,10 @@
     display: flex;
 
     .conference-session {
-      margin: 1em;
-      width: 33%;
-
-      &:first-child:last-child {
-        width: 100%;
-      }
+      padding: 1em;
+      flex-basis: 0;
+      flex-grow: 1;
+      min-width: 35em;
     }
   }
 
@@ -23,29 +21,30 @@
   }
 }
 
+.conference-slot {
+  flex-wrap: wrap;
+}
+.conference-slot-info {
+  flex-basis: 100%;
+  margin: 0 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
 .conference-session {
-  display: flex;
-}
-
-.session-info {
-  display: flex;
-  flex-direction: column;
-  padding-right: .4em;
-
-  .track-1, .track-2, .track-3 {
-    font-size: 64%;
-    text-transform: uppercase;
-    white-space: nowrap;
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
   }
-}
 
-.session-body {
   > h3 {
     margin: 0;
     font-size: 1.4rem;
   }
-  .speaker {
-    font-size: 1.2rem;
+
+  > p {
+    margin-top: .5em;
   }
 }
 
@@ -58,5 +57,43 @@
       margin-right: -5px;
       margin-top: -3px;
     }
+  }
+}
+
+.speaker-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 10px;
+  float: left;
+
+  @include border-radius(50%);
+}
+
+.theme {
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: #f4f4f4;
+  font-size: 1rem;
+
+  background-color: hsl(0, 0, 50);
+
+  &--getting-started {
+    background-color: hsl(50, 60, 50);
+  }
+  &--language {
+    background-color: hsl(0, 0, 20);
+  }
+  &--scientific {
+    background-color: hsl(180, 60, 50);
+  }
+  &--ecosystem {
+    background-color: hsl(120, 60, 50);
+  }
+  &--performance {
+    background-color: hsl(320, 60, 50);
+  }
+  &--industry {
+    background-color: hsl(260, 60, 50);
   }
 }
