@@ -3,13 +3,21 @@
   flex-direction: column;
 
   .conference-slot {
-    display: flex;
+    .conference-slot-inner {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
     .conference-session {
       padding: 1em;
       flex-basis: 0;
       flex-grow: 1;
       min-width: 35em;
+      max-width: 45em;
+
+      :first-child:last-child {
+        max-width: 65em;
+      }
     }
   }
 
@@ -21,9 +29,6 @@
   }
 }
 
-.conference-slot {
-  flex-wrap: wrap;
-}
 .conference-slot-info {
   flex-basis: 100%;
   margin: 0 1rem;
@@ -58,6 +63,14 @@
   > h3 {
     margin: 0;
     font-size: 1.4rem;
+
+    .conference-track {
+      color: $primary-text;
+
+      &--main {
+        display: none;
+      }
+    }
   }
 
   > p {
@@ -78,8 +91,8 @@
 }
 
 .speaker-image {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   margin: 10px;
   float: left;
@@ -92,6 +105,7 @@
   padding: 1px 5px;
   color: #f4f4f4;
   font-size: 1rem;
+  vertical-align: text-top;
 
   background-color: hsl(0, 0, 50);
 
