@@ -123,10 +123,11 @@ hr.custom-hr {
     column-gap: 12px;
     align-items: center;
     width: fit-content;
+    line-height: 1.2rem;
 
     .speaker-image {
-      width: 30px;
-      height: 30px;
+      width: 36px;
+      height: 36px;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;

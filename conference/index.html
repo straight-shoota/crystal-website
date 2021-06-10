@@ -35,7 +35,12 @@ custom_body_classes:
                 {% assign parts = parts[1] | split: ')' %}
                 <div class="speaker-image" style="background-image: url('{{ parts[0] }}')"></div>
               {% endif %}
-              <span>{{ session["Presenter"] }}</span>
+              <div>
+                <div>{{ session["Presenter"] }}</div>
+                  <p class="session-link">
+                    <a href="{{ session["Link"] }}">{{ session["Link"] }}</a>
+                  </p>
+              </div>
             </div>
             <h3>
               {{ session["Talk title"] }}
@@ -46,11 +51,6 @@ custom_body_classes:
             {% if session["Abstract"] %}
               <p class="session-summary">
                 {{ session["Abstract"] }}
-              </p>
-            {% endif %}
-            {% if session["Link"] %}
-              <p class="session-link">
-                <a href="{{ session["Link"] }}">{{ session["Link"] }}</a>
               </p>
             {% endif %}
         </div>
