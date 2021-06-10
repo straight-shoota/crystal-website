@@ -1,18 +1,19 @@
 ---
 title: Crystal 1.0 Conference
+description: Vestibulum vel varius mi, ut ornare nisl. Quisque at nisl nec enim faucibus.
+custom_body_classes:
+  - main
+  - conference
 ---
 
 <div class="conference-session-list">
+  <header><h2>Programme</h2></header>
   {% for session in site.data.conference_talks %}
-    {% if session["Session type"] == "Long Break" %}
-    {% else %}
       {% if session["Start time"] != lastStartTime %}
         {% if lastStartTime %}
       </div>
+      <hr class="custom-hr"/>
     </div>
-          {% if session["Start time"] != lastEndTime %}
-    <div class="conference-sessions-break">Break</div>
-          {% endif %}
         {% endif %}
     <div class="conference-slot">
       <div class="conference-slot-info">
@@ -22,38 +23,45 @@ title: Crystal 1.0 Conference
       {% endif %}
       {% assign lastStartTime = session["Start time"] %}
       {% assign lastEndTime = session["End time"] %}
-      <div class="conference-session">
-        <h3>
-          <span class="conference-track conference-track--{{ session["Room"] | slugify }}">{{ session["Room"] }}:</span>
-          {{ session["Presenter"] }}: {{ session["Talk title"] }}
-          {% if session["Theme"] %}
-            <span class="theme theme--{{ session["Theme"] | slugify }}">{{ session["Theme"] }}</span>
-          {% endif %}
-        </h3>
-
-        {% if session["Speaker picture"] %}
-          {% assign parts = session["Speaker picture"] | split: ' (' %}
-          {% assign parts = parts[1] | split: ')' %}
-          <img class="speaker-image" src="{{ parts[0] }}" />
+      {% if session["Session type"] == "Long Break" or session["Session type"] == "Setup" %}
+          {% assign parts = session["Name"] | split: '-' %}
+          {% assign break_desc = parts | slice: 1, 1000 %}
+          <div class="conference-sessions-break">{{break_desc | join: '-'}}</div>      
+        {% else %}
+        <div class="conference-session">
+            <div class="presenter">
+              {% if session["Speaker picture"] %}
+                {% assign parts = session["Speaker picture"] | split: ' (' %}
+                {% assign parts = parts[1] | split: ')' %}
+                <div class="speaker-image" style="background-image: url('{{ parts[0] }}')"></div>
+              {% endif %}
+              <span>{{ session["Presenter"] }}</span>
+            </div>
+            <h3>
+              {{ session["Talk title"] }}
+            </h3>
+            {% if session["Theme"] %}
+              <span class="theme theme--{{ session["Theme"] | slugify }}">{{ session["Theme"] }}</span>
+            {% endif %}
+            {% if session["Abstract"] %}
+              <p class="session-summary">
+                {{ session["Abstract"] }}
+              </p>
+            {% endif %}
+            {% if session["Link"] %}
+              <p class="session-link">
+                <a href="{{ session["Link"] }}">{{ session["Link"] }}</a>
+              </p>
+            {% endif %}
+        </div>
         {% endif %}
-
-        <p class="session-summary">
-          {{ session["Abstract"] | markdownify }}
-        </p>
-
-        {% if session["Link"] %}
-          <p class0"session-link">
-            <a href="{{ session["Link"] }}">{{ session["Link"] }}</a>
-          </p>
-        {% endif %}
+      {% endfor %}
       </div>
-    {% endif %}
-  {% endfor %}
-      </div>
-  </div>
+    </div>
 </div>
 
 <script>
+
 document.addEventListener("DOMContentLoaded", function() {
   var locale = "default";
   var options = {
@@ -62,10 +70,19 @@ document.addEventListener("DOMContentLoaded", function() {
   var titleFormat = new Intl.DateTimeFormat(locale, options);
   var textFormat = new Intl.DateTimeFormat(locale, {hour: "numeric", minute: "numeric"});
 
+  document.querySelector("h2").innerHTML += ` (${textFormat.resolvedOptions().timeZone})`
+
   document.querySelectorAll("time.local-time").forEach(function(elem){
     var date = new Date(elem.dateTime);
-    elem.innerHTML = textFormat.format(date) + " <small>(" + textFormat.resolvedOptions().timeZone + ")</small>";
+    var timezone = date.getTimezoneOffset() / -60
+    elem.innerHTML = textFormat.format(date) + `<small>GMT${!timezone? `` : timezone > 0? `+${timezone}` : timezone}</small>`;
     elem.title = titleFormat.format(date);
   })
 })
+document.addEventListener('scroll', () => {
+  const header = document.querySelector("header")
+  header.classList.toggle('shadow', header.getBoundingClientRect().y === 0)
+})
+
 </script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
