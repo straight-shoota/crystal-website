@@ -75,12 +75,12 @@ document.addEventListener("DOMContentLoaded", function() {
   var titleFormat = new Intl.DateTimeFormat(locale, options);
   var textFormat = new Intl.DateTimeFormat(locale, {hour: "numeric", minute: "numeric"});
 
-  document.querySelector("h2").innerHTML += ` (${textFormat.resolvedOptions().timeZone})`
+  document.querySelector("h2").innerHTML += ` <small>(times are displayed for ${textFormat.resolvedOptions().timeZone})</small>`
 
   document.querySelectorAll("time.local-time").forEach(function(elem){
     var date = new Date(elem.dateTime);
     var timezone = date.getTimezoneOffset() / -60
-    elem.innerHTML = textFormat.format(date) + `<small>GMT${!timezone? `` : timezone > 0? `+${timezone}` : timezone}</small>`;
+    elem.innerHTML = textFormat.format(date) + `<small>UTC${!timezone? `` : timezone > 0? `+${timezone}` : timezone}</small>`;
     elem.title = titleFormat.format(date);
   })
 })
