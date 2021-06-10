@@ -33,6 +33,7 @@
       width: 100%;
       display: grid;
       row-gap: 12px;
+      height: -moz-fit-content;
       height: fit-content;
 
       :first-child:last-child {
@@ -122,6 +123,7 @@ hr.custom-hr {
     grid-auto-flow: column;
     column-gap: 12px;
     align-items: center;
+    width: -moz-fit-content;
     width: fit-content;
     line-height: 1.2rem;
 
@@ -132,7 +134,7 @@ hr.custom-hr {
       background-position: center;
       background-repeat: no-repeat;
       box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.2);
-    
+
       @include border-radius(50%);
     }
   }
@@ -164,6 +166,7 @@ hr.custom-hr {
   padding: 0 0.5rem;
   color: $primary-text;
   border: 1px $primary-text solid;
+  width: -moz-fit-content;
   width: fit-content;
   font-size: 0.75rem;
   text-transform: uppercase;
