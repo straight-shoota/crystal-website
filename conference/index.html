@@ -74,9 +74,12 @@ custom_body_classes:
             <h3>
               {{ session["Talk title"] }}
             </h3>
-            {% if session["Theme"] %}
-              <span class="theme theme--{{ session["Theme"] | slugify }}">{{ session["Theme"] }}</span>
-            {% endif %}
+            <div class="conference-session-info">
+              {% if session["Theme"] %}
+                <span class="theme theme--{{ session["Theme"] | slugify }}">{{ session["Theme"] }}</span>
+              {% endif %}
+              <span class="conference-session-duration">{{ session["Duration (minutes)"] }} minutes</span>
+            </div>
             {% if session["Abstract"] %}
               <p class="session-summary">
                 {{ session["Abstract"] }}

@@ -158,6 +158,12 @@ hr.custom-hr {
   }
 }
 
+.conference-session-info {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+}
+
 .theme {
   display: flex;
   align-items: center;
