@@ -35,20 +35,22 @@
       row-gap: 12px;
       height: -moz-fit-content;
       height: fit-content;
+      grid-column: 1;
 
       :first-child:last-child {
         max-width: 65em;
       }
 
-      grid-row: 1;
-      &--track-1, &--main {
-        grid-column: 1;
-      }
-      &--track-2 {
-        grid-column: 2;
-      }
-      &--track-3 {
-        grid-column: 3;
+      @media only screen and (min-width: 900px) {
+        &--track-1, &--main {
+          grid-column: 1;
+        }
+        &--track-2 {
+          grid-column: 2;
+        }
+        &--track-3 {
+          grid-column: 3;
+        }
       }
     }
   }
@@ -192,17 +194,14 @@ hr.custom-hr {
 }
 
 @media only screen and (max-width: 900px) {
-
-  .conference-session-list {
-    header {
-      position: unset
+  .conference-session-list .conference-slot {
+    .conference-slot-inner {
+      grid-template-columns: 1fr;
+      row-gap: 60px;
     }
 
-    .conference-slot {
-      .conference-slot-inner {
-        grid-template-columns: 1fr !important;
-        row-gap: 60px;
-      }
+    header {
+      position: unset;
     }
   }
 }
