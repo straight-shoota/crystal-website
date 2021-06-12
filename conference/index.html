@@ -53,9 +53,9 @@ custom_body_classes:
       {% if session["Session type"] == "Long Break" or session["Session type"] == "Setup" %}
           {% assign parts = session["Name"] | split: '-' %}
           {% assign break_desc = parts | slice: 1, 1000 %}
-          <div class="conference-sessions-break">{{break_desc | join: '-'}}</div>      
+          <div class="conference-sessions-break">{{break_desc | join: '-'}}</div>
         {% else %}
-        <div class="conference-session">
+        <div class="conference-session conference-session--{{ session['Room'] | slugify }}">
             <div class="presenter">
               {% if session["Speaker picture"] %}
                 {% assign parts = session["Speaker picture"] | split: ' (' %}
@@ -79,6 +79,7 @@ custom_body_classes:
                 <span class="theme theme--{{ session["Theme"] | slugify }}">{{ session["Theme"] }}</span>
               {% endif %}
               <span class="conference-session-duration">{{ session["Duration (minutes)"] }} minutes</span>
+              <span class="conference-session-room">{{ session["Room" ] }}</span>
             </div>
             {% if session["Abstract"] %}
               <p class="session-summary">
