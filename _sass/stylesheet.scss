@@ -9,10 +9,11 @@
 
 // Generic styles
 @import "fullcalendar_overrides";
-@import "generic";
 @import "pygment_overrides";
 @import "pygment_white";
+@import "site";
 @import "sprites";
+@import "typography";
 
 // Imports for components
 @import "components/footer";
