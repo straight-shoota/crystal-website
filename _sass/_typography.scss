@@ -30,10 +30,6 @@ a {
   }
 }
 
-p > a, td > a, ul:not(#nav-mobile) li > a, dd > a {
-  border-bottom: 1px solid $primary-text;
-}
-
 p:not(.read-more) {
   & > a:not(.gray-link):not(.btn):not(.with-icon) {
     color: #03A9F4;
@@ -60,6 +56,13 @@ table.no-underline a {
   border-style: solid;
   border-color: $lighter-gray;
   border-width: 1px 0 0 0;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .btn-large {

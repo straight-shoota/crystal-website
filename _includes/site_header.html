@@ -1,0 +1,33 @@
+<input type="checkbox" id="site-nav__toggle" checked="no">
+<header class="site-header">
+  <div class="site-header__container">
+    {% if page.url != / %}
+      <div class="site-header__logo">
+        <a class="brand-logo" id="logo-container">
+          <canvas height="120" id="logo-canvas" style="cursor:move" width="120"></canvas>
+        </a>
+      </div>
+    {% endif %}
+
+    <label for="site-nav__toggle" class="btn btn-flat site-header__trigger" aria-label="Toggle menu" aria-expanded="false" aria-controls="header-nav">
+      <i class="site-header__trigger-icon" aria-hidden="true"></i>
+      <span>Menu</span>
+    </label>
+
+    <nav role="navigation" class="site-nav">
+      <!--div class="site-header__nav-inner"-->
+        <ul class="site-nav__list">
+          {% assign navigation_pages = site.data.nav.main %}
+          {% for item in navigation_pages %}
+            {%- assign proto = item.url | slice: 0, 8 -%}
+            <li>
+              <a href="{{ item.url }}"{% if item.url == page.url %} class="selected"{% endif %}{% if proto == "https://" %} target="_blank"{% endif %}>
+                {{ item.label }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      <!--/div-->
+    </nav>
+  </div>
+</header>

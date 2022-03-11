@@ -1,0 +1,258 @@
+:root {
+  --site-header-height: 96px;
+  --space-xxs: 6px;
+
+  // @include breakpoint(md) {
+  //   --header-height: 70px;
+  // }
+  --color-bg: #ffffff;
+}
+
+.site-header {
+  height: var(--site-header-height);
+  width: 100%;
+  background-color: var(--color-bg);
+  z-index: var(--z-index-header, 3);
+  border-bottom: 1px solid $separator;
+}
+
+.site-header__container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-header__logo {
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+
+  a, svg, img, canvas {
+    display: block;
+    height: 100%;
+  }
+}
+
+//////// DESKTOP
+@media(min-width: 800px) {
+  .site-nav {
+    height: 100%;
+  }
+
+  .site-nav-inner {
+    height: 100%;
+  }
+
+  .site-nav__list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+  }
+
+  .site-nav__list > li {
+    height: 100%;
+
+    > a {
+      height: 100%;
+      line-height: var(--site-header-height);
+      color: $black;
+      padding: 0;
+      margin: 0 15px;
+      border-bottom: none;
+
+      &.selected {
+        border-bottom: 5px solid $black;
+      }
+      &:hover {
+        background-color: transparent;
+        border-bottom: 5px solid $black;
+      }
+    }
+  }
+
+  .site-header__trigger {
+    display: none;
+  }
+}
+
+@media(max-width: 800px) {
+  .site-header__logo,
+  .site-header__trigger  {
+    z-index: 101;
+  }
+
+  .site-header__trigger-icon { // hamburger icon
+    position: relative;
+    display: block;
+    height: 2px;
+    width: 1em;
+    background-color: currentColor;
+    margin-right: var(--space-xxs);
+    transition: 0.2s;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: inherit;
+      height: inherit;
+      background-color: currentColor;
+      transition: 0.2s;
+    }
+
+    &::before {
+      transform: translateY(-5px);
+    }
+
+    &::after {
+      transform: translateY(5px);
+    }
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  #site-nav__toggle:checked ~ footer {
+    display: none;
+  }
+
+  #site-nav__toggle:checked ~ .site-main {
+
+  }
+
+  #site-nav__toggle:checked ~ .site-header {
+    display: block;
+    .site-nav {
+      display: block;
+    }
+  }
+
+  .site-nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    max-height: 100vh;
+    overflow: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    background: var(--color-bg);
+
+    &::before { // top header bg + border
+      content: '';
+      display: block;
+      position: sticky;
+      top: 0;
+      height: var(--site-header-height);
+      background: inherit;
+      border-bottom: 1px solid var(--color-contrast-lower);
+    }
+  }
+}
+
+//////// ENDDESKTOP
+
+// .site-nav {
+//   position: absolute;
+//   z-index: 1;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   max-height: 100vh;
+//   background-color: var(--color-bg);
+//   box-shadow: var(--shadow-md);
+//   overflow: auto;
+//   overscroll-behavior: contain;
+//   -webkit-overflow-scrolling: touch;
+
+//   display: none;
+
+//   &::before { // top header bg + border
+//     content: '';
+//     display: block;
+//     position: sticky;
+//     top: 0;
+//     height: var(--header-height);
+//     background: inherit;
+//     border-bottom: 1px solid var(--color-contrast-lower);
+//   }
+// }
+
+nav { // materialize override
+  background-color: transparent;
+  color: inherit;
+  box-shadow: none;
+  height: auto;
+}
+nav ul li { // materialize override
+  float: none;
+}
+nav ul a {
+  color: inherit;
+}
+
+// @media(min-width: 500px) {
+//   .site-nav {
+//     // reset
+//     position: static;
+//     background-color: transparent;
+//     width: auto;
+//     max-height: none;
+//     box-shadow: none;
+//     overflow: visible;
+//     overscroll-behavior: auto;
+//     display: block;
+
+//     &::before {
+//       display: none;
+//     }
+//   }
+// }
+
+
+.wrapper111 {
+
+  .brand-logo {
+    position: relative;
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+
+
+  #logo-container {
+    background-color: $white;
+    border-radius: 50%;
+    margin: 15px;
+    height: 66px;
+    width: 66px;
+    padding: 3px;
+    border-bottom: 0;
+
+    #logo-canvas {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  nav {
+
+    a.button-collapse {
+      color: $black;
+      float: right;
+      i {
+        font-size: 2.5em;
+        line-height: 96px;
+      }
+    }
+  }
+}
