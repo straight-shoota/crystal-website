@@ -16,6 +16,8 @@ collections:
     output: true
   style_guide:
     output: false
+  events:
+    output: true
 
 defaults:
   -
@@ -50,6 +52,14 @@ defaults:
       permalink: /:year/:month/:day/:title.html
       image: /assets/icon.png
       class: release
+  -
+    scope:
+      path: ""
+      type: events
+    values:
+      image: /assets/icon.png
+      layout: page
+      permalink: /events/:title/
 
 twitter:
   username: CrystalLanguage
