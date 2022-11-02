@@ -1,0 +1,23 @@
+---
+title: Sitemap
+---
+<section>
+  <h2>Pages</h2>
+  <ul>
+    {% for entry in site.pages %}
+      {% assign url = entry.url | prepend: "<code>" | append: "</code>" %}
+      <li><a href="{{ entry.url }}">{{ entry.title | default: entry.subtitle | default: url }}</a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% assign collections = site.collections | where: "output", "true" %}
+{% for collection in collections %}
+<section>
+  <h2>{{ collection.label }}</h2>
+  <ul>
+    {% for entry in collection.docs %}
+      <li><a href="{{ entry.url }}">{{ entry.title }}</a> ({{ entry.date  | date: "%F" }})</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}

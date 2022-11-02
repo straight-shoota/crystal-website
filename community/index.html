@@ -1,10 +1,189 @@
 ---
 title: Community
-description: >
-  <p>There are so many ways to get involved in Crystal. Here's a list of our main communication channels and resources.</p>
-  <p>Check out our <a href="/team">Team page</a> to meet the people.</p>
+description:
 css: community
 ---
+<style>
+html {
+  line-height: 1.5;
+}
+p.light {
+  margin-left: 40px;
+  margin-top: 5px;
+}
+.links a.ico {
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+.links a {
+  text-decoration: underline;
+  font-weight: 400;
+}
+.links h2 {
+  color: var(--light-gray);
+  margin-left: 40px;
+}
+</style>
+
+<section id="channels">
+  <div class="grid x3">
+    <div id="discuss" class="links">
+      <h2>Discuss</h2>
+
+      <div class="">
+        <a class="ico left forum" href="https://forum.crystal-lang.org" title="Crystal Forum">Crystal Forum</a>
+        <p class="light">The place for general discussions. Ask for help, share your project, or anything else Crystal.</p>
+      </div>
+      <div class="">
+        <a class="ico left github" href="https://github.com/crystal-lang/crystal/issues" title="Crystal issue tracker on GitHub">Issue Tracker</a>
+        <p class="light">Reports bugs and talk about feature requests.</p>
+      </div>
+      <div class="">
+        <a class="ico left reddit" href="https://www.reddit.com/r/crystal_programming/" title="Crystal Programming on Reddit">r/crystal_programming</a>
+        <p class="light">The subreddit is a good place to share your work and talk about Crystal in a wider community.</p>
+      </div>
+      <div class="">
+        <a class="ico left stack" href="https://stackoverflow.com/questions/tagged/crystal-lang?sort=newest" title="crystal-lang on StackOverflow">crystal-lang</a>
+        <p class="light">Ask for help on StackOverflow, or help other people – learning & sharing all the way through.</p>
+      </div>
+    </div>
+
+    <div class="links" id="chat">
+      <h2>Chat</h2>
+
+      <div class="kard">
+        <li>
+          <li><a class="ico left gitter" href="https://gitter.im/crystal-lang/crystal">crystal-lang/crystal</a></li>
+          <li><a class="ico left irc" href="ircs://irc.libera.chat:6697#crystal-lang">#crystal-lang</a> (<a href="https://web.libera.chat/#crystal-lang">web client</a>, <a href="http://irclog.crystal-lang.org">logs</a>)</li>
+          <li><a class="ico left matrix" href="https://matrix.to/#/!cdgzflbMCezhXeFNnk:matrix.org">#crystal-lang_crystal:gitter.im</a>(<a href="https://app.element.io/#/room/#crystal-lang_crystal:gitter.im">web client</a>)</li>
+        </li>
+        <p class="light">The official chat room at Gitter is bridged to IRC and Matrix.</p>
+      </div>
+      <div class="kard">
+        <a class="ico left discord" href="https://discord.gg/YS7YvQy">Crystal Discord</a>
+        <p class="light">The Discord server is community operated and has many channels for topics around Crystal.</p>
+      </div>
+      <div class="kard">
+        <a class="ico left telegram" href="https://github.com/veelenga/awesome-crystal#unofficial">Localized Telegram groups</a>
+      </div>
+    </div>
+
+    <div class="links" id="news">
+      <h2>News</h2>
+
+      <div class="kard" id="blog">
+        <a class="ico left chat" href="/blog">Crystal Blog</a> (<a href="ico left feed" href="/feed.xml">Feed</a>)
+        <p class="light">Release announcements, use cases, features and other news from the Crystal team.</p>
+      </div>
+      <div class="kard">
+        <a class="ico left twitter" href="https://twitter.com/CrystalLanguage">@CrystalLanguage</a>
+        <p class="light">Get news and engage in discussions on Twitter.<br> Be sure to mention us in your tweets!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ecosystem">
+  <a id="shards" />
+  <h2>Crystal Ecosystem</h2>
+
+  <p>The Crystal ecosystem is backed by libraries called <em>shards</em>, many are available as Open Source software.</p>
+  <p>Dependencies are managed by the eponymous program <a href="https://github.com/crystal-lang/shards/">shards</a> which is included in most Crystal distributions.</p>
+
+  <div class="links">
+    <h3>Shard Indices</h3>
+    <p>Shards are a decentralized system and there is no central registry. Instead, there are indices which allow you discover shards.</p>
+
+    <div id="shardbox">
+      <a class="ico left play" href="https://shardbox.org/">Shardbox.org</a>
+      <p class="light">A curated database of Crystal shards. It helps developers to discover shards and the Shards ecosystem.</p>
+    </div>
+
+    <div id="shards.info">
+      <a class="ico left play" href="https://shards.info/">shards.info</a>
+      <p  class="light">Lists shard repositories on GitHub and GitLab with dependencies and releases.</p>
+    </div>
+
+    <div id="crystalshards.org">
+      <a class="ico left play" href="https://crystalshards.org">crystalshards.org</a>
+      <p class="light">Lists shard repositories on GitHub with dependencies.</p>
+    </div>
+
+    <div id="awesome">
+      <a class="ico left awesome" href="https://github.com/veelenga/awesome-crystal">awesome-crystal</a>
+      <p class="light">A curated Awesome List of Crystal shards, tools and tutorials.</p>
+    </div>
+  </div>
+
+  <div class="links">
+    <h3>Tooling</h3>
+
+    <a class="ico left " href="https://github.com/veelenga/awesome-crystal#editor-plugins">Editor Plugins</a>
+  </div>
+
+</section>
+
+<section>
+  <h2>Talk about Crystal</h2>
+
+  <div class="grid x3">
+    <div class="links">
+      <div>
+        <a class="ico left shuttle" href="https://podcast.chicagocrystal.org/">Chicago Crystal Podcast</a>
+      </div>
+      <div>
+        <a class="ico left shuttle" href="https://www.youtube.com/channel/UCI1RvHPG6S9mw4eRoJfH2kA">Chicago Crystal Videos</a>
+      </div>
+      <div>
+        <a class="ico left shuttle" href="https://crystal-ann.com">Crystal [ANN]</a>
+        <p class="light">Announcements of new projects, blog posts, version updates or any other Crystal work.</p>
+      </div>
+      <div class="kard" id="newsletter">
+        <a class="ico left mail" href="http://www.crystalweekly.com/">Crystal Weekly</a>
+        <p class="light">Weekly newsletter that summarizes the latest updates in the Crystal community.</p>
+      </div>
+    </div>
+    <div class="links">
+      <div>
+        <a class="ico left shuttle" href="https://dev.to/t/crystal">Crystal on dev.to</a>
+      </div>
+      <div>
+        <a class="ico left shuttle" href="https://medium.com/tag/crystal-lang">Crystal on Medium</a>
+      </div>
+      <div>
+        <a class="ico left shuttle" href="https://manas.tech/blog/">Manas.Tech Blog</a>
+      </div>
+    </div>
+  </div>
+  <div class="links">
+    <h2>Selected resources</h2>
+    <div>
+      <a class="ico left shuttle" href="https://podcast.chicagocrystal.org/1030945/3777812-ary-borenszweig-origins-of-crystal">Chicago Crystal: Ary Borenszweig: Origins of Crystal</a>
+      <p class="light">2020-05-15</p>
+    </div>
+    <div>
+      <a class="ico left shuttle" href="https://twitter.com/sw_unscripted/status/1512434388889387011">Software Unscripted: Crystal with Johannes Müller and creator Ary Borenszweig</a>
+      <p class="light">2022-04-08</p>
+    </div>
+    <div>
+      <a class="ico left shuttle" href="https://www.infoq.com/news/2021/04/crystal-ruby-c-release-1/">InfoQ: Crystal Language That Aims at C Performance with Ruby Syntax Releases 1.0 </a>
+      <p class="light">2021-04-01</p>
+    </div>
+    <div>
+      <a class="ico left shuttle" href="https://www.heise.de/news/Programmiersprache-Crystal-erfolgreich-auf-Version-1-0-gezuechtet-5995646.html" lang="de">heise.de: Programmiersprache: Crystal erfolgreich auf Version 1.0 gezüchtet</a> (DE)
+      <p class="light">2021-03-23</p>
+    </div>
+    <div>
+      <a class="ico left shuttle" href="https://www.infoq.com/articles/crystal-ruby-c-compiled-typed/">InfoQ: Compiled, Typed, Ruby-Inspired Crystal Language is Ready for Production - Q&A with Beta Ziliani </a>
+      <p class="light">2021-05-08</p>
+    </div>
+    <div>
+      <a class="ico left shuttle" href="https://www.sitepoint.com/a-quick-dive-into-the-crystal-programming-language/">Sitepoint: A Quick Dive into the Crystal Programming Language</a>
+      <p class="light">2016-07-16</p>
+    </div>
+  </div>
+</section>
 
 <section>
 
@@ -13,7 +192,7 @@ css: community
   {% include community_row.html
             title="Security Issues"
             divId="security"
-            content="Should you find any security-related issue, please <strong>do not share them openly</strong> in the issue tracker. We have a dedicated mailbox where we keep track of them.<br /><br />
+            content="Should you find any security-related issue, please do not share them openly in the issue tracker. We have a dedicated mailbox where we keep track of them.<br /><br />
             You can encrypt your message <a href=\"https://keybase.io/encrypt\" target=\"_blank\">via Keybase</a> (set recipient <code>crystal</code>),
             or with our <a href=\"crystal-pgp-key.txt\" target=\"_blank\">PGP key</a> (fingerprint <code>5995 C83C D754 BE44 8164 1929 0961 7FD3 7CC0 6B54</code>)
             also available on <a href=\"https://keybase.io/crystal/pgp_keys.asc\" target=\"_blank\">Keybase server</a>,
@@ -33,26 +212,6 @@ css: community
   %}
 
   {% include community_row.html
-            title="Forum"
-            divId="discuss"
-            content="The Crystal Forum is the first to-go place for any general discussion. Feel free to ask a question, share your project with others, ask for guidance and best practices, offer your help contributing to a project, or anything else Crystal-related."
-            link_text="forum.crystal-lang.org"
-            url="https://forum.crystal-lang.org"
-            icon="forum"
-  %}
-
-  {% include community_row.html
-            title="New Releases, Use Cases and more"
-            divId="blog"
-            content="In the official Crystal blog you can find the detailed announcements for new releases, some interesting use cases, the rationale behind some of the language's design decisions and things the team write around the code they usually write.<br/><br/>
-            We also accept posts from guest writers, so if you have something awesome you have built with Crystal, <a href=\"mailto:crystal@manas.tech\" title=\"Or pick any other channel listed here\">contact us</a> and we'll be happy to have you featured on the blog."
-            link_text="Crystal Blog"
-            url="/blog"
-            icon="chat"
-            internal_link="true"
-  %}
-
-  {% include community_row.html
             title="Used in production"
             divId="blog"
             content="This is a non-exhaustive list of companies and projects using Crystal in production. If you use Crystal on a daily basis, we encourage you to fill in <a href=\"https://airtable.com/shrapvn1N02qwkowQ\">this form</a>."
@@ -60,114 +219,6 @@ css: community
             url="/used_in_prod"
             icon="building"
             internal_link="true"
-  %}
-
-  {% include community_row.html
-            title="Chat Rooms"
-            divId="chat"
-            content="The Gitter room is the official chat room for Crystal. You can drop a quick question here to try and get it answered quickly, ask for guidance, or engage on a short discussion on a feature or project you are interested in. Make sure to keep the discussion organised, and consider using the mailing list if the chat drags for too long."
-            link_text="crystal-lang/crystal"
-            url="https://gitter.im/crystal-lang/crystal"
-            icon="gitter"
-            continues=true
-            custom_icon=true
-  %}
-
-  {% include community_row.html
-            title=""
-            divId="liberachat"
-            content="Our IRC channel at <a href=\"ircs://irc.libera.chat:6697#crystal-lang\">irc.libera.chat:6697#crystal-lang</a> is bridged to the Gitter room, so anything sent on one platform is forwarded to the other one. Logs are available at <a href=\"http://irclog.crystal-lang.org\">irclog.crystal-lang.org</a>."
-            link_text="#crystal-lang"
-            url="https://web.libera.chat/#crystal-lang"
-            continues="true"
-            icon="irc"
-  %}
-
-  {% include community_row.html
-            title=""
-            content="The Discord server, unlike the Gitter room and the IRC channel, is unofficial, but strives not to yield to the official alternatives. There are many channels to discuss any kinds of topics related to the language."
-            link_text="discord.com"
-            url="https://discord.gg/YS7YvQy"
-            icon="discord"
-            continues="true"
-  %}
-
-  {% include community_row.html
-            title=""
-            content="Small but brave community to help each other with Crystal. Main language is russian but you may ask something in english too."
-            link_text="Russian speaking community"
-            url="https://t.me/crystal_ru"
-            icon="telegram"
-  %}
-
-  {% include community_row.html
-            title="General Announcements and Events"
-            content="The Twitter account will often tweet general announcements on releases and events, and retweet any interesting articles from the tweetosphere. Be sure to mention it if you are tweeting about Crystal!"
-            link_text="@CrystalLanguage"
-            url="https://twitter.com/CrystalLanguage"
-            icon="twitter"
-  %}
-
-  {% include community_row.html
-            title="Share Your Work"
-            content="The Crystal Programming subreddit contains announcements on new releases, interesting libraries, blog posts, and is in general a good place to share your work with the rest of the Crystal community."
-            link_text="Crystal Programming"
-            url="https://www.reddit.com/r/crystal_programming/"
-            icon="reddit"
-  %}
-
-  {% include community_row.html
-            title="Ask For Help"
-            content="Of course, there is a crystal-lang tag in StackOverflow. Ask for help with your Crystal project there, or help other people solve theirs - learning &amp; sharing all the way through."
-            link_text="crystal-lang"
-            url="https://stackoverflow.com/questions/tagged/crystal-lang?sort=newest"
-            icon="stack"
-  %}
-
-  {% include community_row.html
-            title="Crystal Shards, Tools and Tutorials"
-            divId="shards"
-            content="Following the awesome-lists tradition, the awesome-crystal GitHub repository contains a curated list of Crystal shards, tools and tutorials. If you want your contribution to Crystal to be listed here, fork the repository, add it to the list and send a pull request."
-            link_text="awesome-crystal"
-            url="https://github.com/veelenga/awesome-crystal"
-            continues="true"
-            icon="awesome"
-  %}
-
-  {% include community_row.html
-            title=""
-            divId="shardbox"
-            content="A database of Crystal shards. It helps developers to discover shards and the Shards ecosystem."
-            link_text="Shardbox.org"
-            url="https://shardbox.org/"
-            continues="true"
-            icon="play"
-  %}
-
-  {% include community_row.html
-            title=""
-            content="View of all repositories on GitHub and GitLab that have Crystal code in them and easily identify the dependencies and the associated releases."
-            link_text="shards.info"
-            url="https://shards.info/"
-            continues="true"
-            icon="play"
-  %}
-
-  {% include community_row.html
-            title=""
-            content="The crystalshards.org service provides an uncurated view of all repositories on GitHub that have Crystal code in them.  With its search capability you can find the shard or application you're looking for."
-            link_text="crystalshards.org"
-            url="https://crystalshards.org"
-            icon="play"
-  %}
-
-  {% include community_row.html
-            title="Newsletter"
-            divId="newsletter"
-            content="Crystal Weekly summarizes every news of the Crystal community in a short, focused newsletter. You can subscribe to it and even see the past issues on the web."
-            link_text="Crystal Weekly"
-            url="http://www.crystalweekly.com/"
-            icon="mail"
   %}
 
   {% include community_row.html

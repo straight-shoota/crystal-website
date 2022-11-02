@@ -119,63 +119,61 @@
   }
 }
 
-.cards {
-  font-size: 18px;
 
-  .card {
-    .header {
-      padding: 1em 0;
-    }
-    .description {
-      padding: 29px 18px;
-      background: #f2f2f2;
 
-      p {
-        font: normal 12px/16px var(--sans);
-        opacity: .5;
-      }
-      p:last-of-type {
-        margin-bottom: 0.5em;
-      }
-    }
-
-    h2, h3 {
-      margin: .9em 0 .5em;
-      font: normal 14px var(--sans);
-      text-transform: uppercase;
-    }
-    h3 {
-      opacity: .5;
-      margin: 1.7em 0 0;
-    }
-    h3:first-of-type {
-      margin-top: .5em;
-    }
-    strong {
-      font: bold 18px var(--sans);
-    }
-    img {
-      width: 100%;
-    }
-    .tag {
-      line-height: 1;
-      opacity: .5;
-      position: relative;
-      margin: 9px 0 0;
-      font-size: 14px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      width: calc( 100% - 30px );
-      height: 20px;
-      line-height: 20px;
-      padding: 0 0 0 30px;
-      background: url("/assets/icons/tag.svg") no-repeat;
-    }
-    .score {
-      font: 300 36px/39px var(--sans);
-      opacity: .5;
-    }
-
+.card {
+  .header {
+    padding: 1em 0;
   }
+  .description {
+    padding: 29px 18px;
+    background: #f2f2f2;
+
+    p {
+      font: normal 12px/16px var(--sans);
+      opacity: .5;
+    }
+    p:last-of-type {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  h2, h3 {
+    margin: .9em 0 .5em;
+    font: normal 14px var(--sans);
+    text-transform: uppercase;
+  }
+  h3 {
+    opacity: .5;
+    margin: 1.7em 0 0;
+  }
+  h3:first-of-type {
+    margin-top: .5em;
+  }
+  strong {
+    font: bold 18px var(--sans);
+  }
+  img {
+    width: 100%;
+  }
+  .tag {
+    line-height: 1;
+    opacity: .5;
+    position: relative;
+    margin: 9px 0 0;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: calc( 100% - 30px );
+    height: 20px;
+    line-height: 20px;
+    padding: 0 0 0 30px;
+    background: url("/assets/icons/tag.svg") no-repeat;
+  }
+  .score {
+    font: 300 36px/39px var(--sans);
+    opacity: .5;
+  }
+
 }
