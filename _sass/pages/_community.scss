@@ -53,3 +53,26 @@ article {
     }
   }
 }
+
+.events-list {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+
+  > article {
+    flex-basis: 20em;
+    flex-grow: 1;
+    padding: 0;
+
+    h3 {
+      margin: 1em 0 .5em;
+    }
+
+    .meta {
+      color: var(--light-gray);
+      * + *::before {
+        content: " | "
+      }
+    }
+  }
+}
