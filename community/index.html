@@ -85,7 +85,27 @@ p.light {
 </section>
 
 <section id="team">
-  <a class="hex btn shadow" href="/team"><span>Meet the team</span></a>
+  <div class="team-pictures">
+    {% for member in site.data.team.core %}
+      <picture>
+        <source srcset="/assets/authors/{{ member[0] }}.webp" type="image/webp">
+        <img  src="/assets/authors/{{ member[0] }}.jpg" loading="lazy" />
+      </picture>
+    {% endfor %}
+    {% for member in site.data.team.admin %}
+      <picture>
+        <source srcset="/assets/authors/{{ member[0] }}.webp" type="image/webp">
+        <img  src="/assets/authors/{{ member[0] }}.jpg" loading="lazy" />
+      </picture>
+    {% endfor %}
+    {% for member in site.data.team.moderator %}
+      <picture>
+        <source srcset="/assets/authors/{{ member[0] }}.webp" type="image/webp">
+        <img  src="/assets/authors/{{ member[0] }}.jpg" loading="lazy" />
+      </picture>
+    {% endfor %}
+    <a class="hex btn shadow" href="/team"><span>Meet the team</span></a>
+  </div>
 </section>
 
 <section id="ecosystem">
