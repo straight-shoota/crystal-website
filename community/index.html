@@ -37,7 +37,7 @@ p.light {
       </div>
       <div class="">
         <a class="ico left github" href="https://github.com/crystal-lang/crystal/issues" title="Crystal issue tracker on GitHub">Issue Tracker</a>
-        <p class="light">Reports bugs and talk about feature requests.</p>
+        <p class="light">Reports bugs and talk about enhancements.</p>
       </div>
       <div class="">
         <a class="ico left reddit" href="https://www.reddit.com/r/crystal_programming/" title="Crystal Programming on Reddit">r/crystal_programming</a>
@@ -80,6 +80,14 @@ p.light {
         <a class="ico left twitter" href="https://twitter.com/CrystalLanguage">@CrystalLanguage</a>
         <p class="light">Get news and engage in discussions on Twitter.<br> Be sure to mention us in your tweets!</p>
       </div>
+      <div>
+        <a class="ico left shuttle" href="https://crystal-ann.com">Crystal [ANN]</a>
+        <p class="light">Announcements of new projects, blog posts, version updates or any other Crystal work.</p>
+      </div>
+      <div class="kard" id="newsletter">
+        <a class="ico left mail" href="http://www.crystalweekly.com/">Crystal Weekly</a>
+        <p class="light">Weekly newsletter that summarizes the latest updates in the Crystal community.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -104,7 +112,7 @@ p.light {
         <img  src="/assets/authors/{{ member[0] }}.jpg" loading="lazy" />
       </picture>
     {% endfor %}
-    <a class="hex btn shadow" href="/team"><span>Meet the team</span></a>
+    <a class="hex btn shadow" href="/team" style="white-space: nowrap; width: min-content;"><span style="padding: 0 3em;">Meet the team</span></a>
   </div>
 </section>
 
@@ -114,61 +122,66 @@ p.light {
 
   <p>The Crystal ecosystem is backed by libraries called <em>shards</em>, many are available as Open Source software.</p>
   <p>Dependencies are managed by the eponymous program <a href="https://github.com/crystal-lang/shards/">shards</a> which is included in most Crystal distributions.</p>
+  <p>Shards is a decentralized dependency system and there is no central registry. Instead, there are indices which allow you discover shards.</p>
 
-  <div class="links">
-    <h3>Shard Indices</h3>
-    <p>Shards are a decentralized system and there is no central registry. Instead, there are indices which allow you discover shards.</p>
+  <div class="grid x2">
+    <div class="links">
+      <h2>Shard Indices</h2>
 
-    <div id="shardbox">
-      <a class="ico left play" href="https://shardbox.org/">Shardbox.org</a>
-      <p class="light">A curated database of Crystal shards. It helps developers to discover shards and the Shards ecosystem.</p>
+      <div id="shardbox">
+        <a class="ico left play" href="https://shardbox.org/">Shardbox.org</a>
+        <p class="light">A curated database of Crystal shards. It helps developers to discover shards and the Shards ecosystem.</p>
+      </div>
+
+      <div id="shards.info">
+        <a class="ico left play" href="https://shards.info/">shards.info</a>
+        <p  class="light">Lists shard repositories on GitHub and GitLab with dependencies and releases.</p>
+      </div>
+
+      <div id="crystalshards.org">
+        <a class="ico left play" href="https://crystalshards.org">crystalshards.org</a>
+        <p class="light">Lists shard repositories on GitHub with dependencies.</p>
+      </div>
+
+      <div id="awesome">
+        <a class="ico left awesome" href="https://github.com/veelenga/awesome-crystal">awesome-crystal</a>
+        <p class="light">A curated Awesome List of Crystal shards, tools and tutorials.</p>
+      </div>
     </div>
 
-    <div id="shards.info">
-      <a class="ico left play" href="https://shards.info/">shards.info</a>
-      <p  class="light">Lists shard repositories on GitHub and GitLab with dependencies and releases.</p>
+
+    <div class="links">
+      <h2>Tooling</h2>
+
+      <div>
+        <a class="ico left awesome" href="https://github.com/veelenga/awesome-crystal#editor-plugins">Editor Plugins</a>
+        <p class="light">Compilation of plugins for source editors and IDEs.</p>
+      </div>
+
+      <div>
+        <a class="ico left play" href="https://crystal-ameba.github.io/">Ameba</a>
+        <p class="light">Code style linter for Crystal</p>
+      </div>
     </div>
-
-    <div id="crystalshards.org">
-      <a class="ico left play" href="https://crystalshards.org">crystalshards.org</a>
-      <p class="light">Lists shard repositories on GitHub with dependencies.</p>
-    </div>
-
-    <div id="awesome">
-      <a class="ico left awesome" href="https://github.com/veelenga/awesome-crystal">awesome-crystal</a>
-      <p class="light">A curated Awesome List of Crystal shards, tools and tutorials.</p>
-    </div>
-  </div>
-
-  <div class="links">
-    <h3>Tooling</h3>
-
-    <a class="ico left " href="https://github.com/veelenga/awesome-crystal#editor-plugins">Editor Plugins</a>
   </div>
 
 </section>
 
 <section>
-  <h2>Talk about Crystal</h2>
+  <h2>Crystal Sphere</h2>
 
   <div class="grid x3">
     <div class="links">
+      <h2>Podcasts & Videos</h2>
       <div>
         <a class="ico left shuttle" href="https://podcast.chicagocrystal.org/">Chicago Crystal Podcast</a>
       </div>
       <div>
         <a class="ico left shuttle" href="https://www.youtube.com/channel/UCI1RvHPG6S9mw4eRoJfH2kA">Chicago Crystal Videos</a>
       </div>
-      <div>
-        <a class="ico left shuttle" href="https://crystal-ann.com">Crystal [ANN]</a>
-        <p class="light">Announcements of new projects, blog posts, version updates or any other Crystal work.</p>
-      </div>
-      <div class="kard" id="newsletter">
-        <a class="ico left mail" href="http://www.crystalweekly.com/">Crystal Weekly</a>
-        <p class="light">Weekly newsletter that summarizes the latest updates in the Crystal community.</p>
-      </div>
     </div>
     <div class="links">
+      <h2>Blogs</h2>
       <div>
         <a class="ico left shuttle" href="https://dev.to/t/crystal">Crystal on dev.to</a>
       </div>
