@@ -35,6 +35,10 @@ $(htmlproofer):
 format: node_modules/prettier
 	yarn prettier --write .
 
+.PHONY: check_format
+check_format: node_modules/prettier
+	yarn prettier --check .
+
 node_modules/prettier:
 	yarn install
 

@@ -1,0 +1,16 @@
+name: Test
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-22.10
+    steps:
+      - name: Download source
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Run prettier
+        run: make check_format
