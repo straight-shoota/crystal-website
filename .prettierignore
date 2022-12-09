@@ -1,0 +1,6 @@
+_site
+_site*
+*.min.js
+*.html
+*.html.liquid
+*.md

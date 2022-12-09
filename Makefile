@@ -31,6 +31,13 @@ $(htmlproofer):
 	mkdir -p $(dir $@)
 	gem install --version 3.19.3 html-proofer --bindir $(dir $@)
 
+.PHONY: format
+format: node_modules/prettier
+	yarn prettier --write .
+
+node_modules/prettier:
+	yarn install
+
 .PHONY: clean
 clean:
 	rm -rf $(OUTPUT_DIR)
