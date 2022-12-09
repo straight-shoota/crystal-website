@@ -71,4 +71,5 @@ end
 
 File.open("#{__DIR__}/../_data/opencollective.json", "w") do |file|
   sponsors.save(file)
+  file.puts
 end

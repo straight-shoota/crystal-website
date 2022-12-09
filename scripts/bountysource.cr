@@ -255,4 +255,5 @@ end
 
 File.open("#{__DIR__}/../_data/bountysource.json", "w") do |file|
   sponsors.save(file)
+  file.puts
 end
