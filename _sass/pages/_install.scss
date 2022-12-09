@@ -44,7 +44,8 @@
   text-align: center;
   padding: 4rem 0 3rem;
 
-  h1, h2 {
+  h1,
+  h2 {
     @extend .grey-text;
     font-family: $codeFont;
     margin-bottom: 3rem;

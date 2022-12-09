@@ -1,4 +1,3 @@
-
 // Reset
 // --------------------------------------------------
 // Adapted from Normalize.css http://github.com/necolas/normalize.css
@@ -35,7 +34,7 @@ video {
 // -------------------------
 
 audio:not([controls]) {
-    display: none;
+  display: none;
 }
 
 // Base settings
@@ -44,7 +43,7 @@ audio:not([controls]) {
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 // Hover & Active
 a:hover,
@@ -110,7 +109,8 @@ input {
   line-height: normal; // FF3/4 have !important on line-height in UA stylesheet
 }
 button::-moz-focus-inner,
-input::-moz-focus-inner { // Inner padding and border oddities in FF3/4
+input::-moz-focus-inner {
+  // Inner padding and border oddities in FF3/4
   padding: 0;
   border: 0;
 }
@@ -121,10 +121,11 @@ input[type="submit"] {
   cursor: pointer; // Cursors on all buttons applied consistently
   -webkit-appearance: button; // Style clickable inputs in iOS
 }
-input[type="search"] { // Appearance in Safari/Chrome
+input[type="search"] {
+  // Appearance in Safari/Chrome
   -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-          box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
   -webkit-appearance: textfield;
 }
 input[type="search"]::-webkit-search-decoration,
@@ -136,7 +137,13 @@ textarea {
   vertical-align: top; // Readability and alignment cross-browser
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
   padding: 0;
 }

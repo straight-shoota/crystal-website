@@ -16,7 +16,8 @@
         margin: 5px auto;
       }
 
-      &:before, &:after {
+      &:before,
+      &:after {
         content: "";
         border: solid 1px $light-gray;
         width: 5px;
@@ -34,7 +35,8 @@
       }
     }
 
-    &:before, &:after {
+    &:before,
+    &:after {
       content: "";
       border: solid 1px $light-gray;
       width: 5px;
@@ -96,14 +98,14 @@
       font-size: 22px;
       word-wrap: break-word;
       &.roboto {
-        font-family: 'Roboto';
+        font-family: "Roboto";
       }
       &.medium {
-        font-family: 'Roboto';
+        font-family: "Roboto";
         font-weight: 500;
       }
       &.mono {
-        font-family: 'Roboto Mono';
+        font-family: "Roboto Mono";
       }
     }
   }
@@ -120,14 +122,15 @@
     }
   }
 
-  ul.guidelines.dos, ul.guidelines.donts {
+  ul.guidelines.dos,
+  ul.guidelines.donts {
     list-style: none;
     padding: 0;
     li {
       padding-left: 2.5em;
     }
     li:before {
-      font-family: 'Material Icons';
+      font-family: "Material Icons";
       display: inline-block;
       margin-left: -1.8em; /* same as padding-left set on li */
       width: 1.8em; /* same as padding-left set on li */

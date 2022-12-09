@@ -14,7 +14,7 @@
     transition: all 0.25s;
 
     &.shadow {
-      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     }
   }
 }
@@ -26,43 +26,44 @@
   row-gap: 40px;
   align-items: start;
 
-    .conference-session {
-      width: 100%;
-      display: grid;
-      row-gap: 12px;
-      grid-column: 1;
+  .conference-session {
+    width: 100%;
+    display: grid;
+    row-gap: 12px;
+    grid-column: 1;
 
-      border-left: 4px solid black;
-      padding-left: 10px;
-      height: 100%;
-      align-items: start;
-      grid-template-rows: auto auto auto auto auto 1fr;
+    border-left: 4px solid black;
+    padding-left: 10px;
+    height: 100%;
+    align-items: start;
+    grid-template-rows: auto auto auto auto auto 1fr;
 
-      :first-child:last-child {
-        max-width: 65em;
+    :first-child:last-child {
+      max-width: 65em;
+    }
+
+    @media only screen and (min-width: 900px) {
+      &--track-1,
+      &--main {
+        grid-column: 2;
       }
-
-      @media only screen and (min-width: 900px) {
-        &--track-1, &--main {
-          grid-column: 2;
-        }
-        &--track-2 {
-          grid-column: 3;
-        }
-        &--track-3 {
-          grid-column: 4;
-        }
-        &--span2 {
-          grid-row-end: 2 span;
-        }
-        &--span6 {
-          grid-row-end: 6 span;
-        }
-        &--span7 {
-          grid-row-end: 7 span;
-        }
+      &--track-2 {
+        grid-column: 3;
+      }
+      &--track-3 {
+        grid-column: 4;
+      }
+      &--span2 {
+        grid-row-end: 2 span;
+      }
+      &--span6 {
+        grid-row-end: 6 span;
+      }
+      &--span7 {
+        grid-row-end: 7 span;
       }
     }
+  }
 
   .conference-sessions-break {
     margin-top: -4px;
@@ -100,7 +101,7 @@
 
 hr.custom-hr {
   position: relative;
-  content: '';
+  content: "";
   border: none;
   border-top: 1px $light-gray solid;
   margin: 30px 0;
@@ -111,7 +112,7 @@ hr.custom-hr {
     position: absolute;
     bottom: -3px;
     left: -6px;
-    content: '';
+    content: "";
     width: 5px;
     height: 5px;
     border: 1px $light-gray solid;
@@ -121,7 +122,7 @@ hr.custom-hr {
     position: absolute;
     bottom: -3px;
     right: -6px;
-    content: '';
+    content: "";
     width: 5px;
     height: 5px;
     border: 1px $light-gray solid;
@@ -129,7 +130,6 @@ hr.custom-hr {
 }
 
 .conference-session {
-
   .conference-track {
     display: inline-flex;
     align-items: center;
@@ -205,7 +205,7 @@ hr.custom-hr {
 }
 
 @media only screen and (max-width: 900px) {
-  .conference-session-list{
+  .conference-session-list {
     .conference-slot {
       .conference-slot-inner {
         grid-template-columns: 1fr;
@@ -226,6 +226,6 @@ hr.custom-hr {
 
 .session-links {
   display: flex;
-  gap: .5em;
+  gap: 0.5em;
   flex-wrap: wrap;
 }

@@ -50,7 +50,7 @@
 }
 
 .row .footnotes p {
-  margin: 0
+  margin: 0;
 }
 
 .post-layout {
@@ -94,14 +94,15 @@
       color: $primary-text;
     }
   }
-  h1, h2 {
+  h1,
+  h2 {
     @extend h2;
     margin-top: 100px;
   }
 
   hr {
     border: none;
-    border-top: 1px solid #D7D7D7;
+    border-top: 1px solid #d7d7d7;
   }
 }
 

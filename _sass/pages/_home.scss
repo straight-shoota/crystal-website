@@ -49,7 +49,6 @@
     text-align: center;
     z-index: 1000;
 
-
     ul#nav-desktop {
       display: inline-block;
       float: none !important;
@@ -152,7 +151,8 @@
         display: block;
         margin: 5px 0;
       }
-      i, span.with_icon {
+      i,
+      span.with_icon {
         color: $black;
       }
     }
@@ -189,7 +189,9 @@
     margin-top: 70px;
     font-size: 48px;
     color: #999999;
-    a { color: #000000; }
+    a {
+      color: #000000;
+    }
   }
 }
 
@@ -203,14 +205,16 @@
       margin: 0 3px;
     }
   }
-  .sponsorship-logo{
+  .sponsorship-logo {
     height: 28px;
   }
   .oc-logo {
     height: 18px;
   }
   .flag {
-    a { border-bottom: 0; }
+    a {
+      border-bottom: 0;
+    }
   }
   @media only screen and (max-width: 768px) {
     .flag-logos {
@@ -253,11 +257,11 @@
 }
 
 .contributing-link {
-  color: #03A9F4;
+  color: #03a9f4;
   border-bottom: 0;
   &:hover {
-    color: #03A9F4;
-    border-bottom: 1px solid #03A9F4;
+    color: #03a9f4;
+    border-bottom: 1px solid #03a9f4;
   }
 }
 
@@ -364,7 +368,7 @@
   }
 
   .tb-date {
-    font-size: .9rem;
+    font-size: 0.9rem;
     padding: 0 0.5em;
     display: none;
   }

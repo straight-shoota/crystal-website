@@ -30,17 +30,20 @@ a {
   }
 }
 
-p > a, td > a, ul:not(#nav-mobile) li > a, dd > a {
+p > a,
+td > a,
+ul:not(#nav-mobile) li > a,
+dd > a {
   border-bottom: 1px solid $primary-text;
 }
 
 p:not(.read-more) {
   & > a:not(.gray-link):not(.btn):not(.with-icon) {
-    color: #03A9F4;
+    color: #03a9f4;
     border-bottom: 0;
     &:hover {
-      color: #03A9F4;
-      border-bottom: 1px solid #03A9F4;
+      color: #03a9f4;
+      border-bottom: 1px solid #03a9f4;
     }
   }
 }

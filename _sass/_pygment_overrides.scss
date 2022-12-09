@@ -1,21 +1,22 @@
 .highlight {
   span.nb {
-    color: #E45546;
+    color: #e45546;
   }
-  span.s2, span.si {
-    color: #51A24D;
+  span.s2,
+  span.si {
+    color: #51a24d;
   }
   span.nf {
-    color: #4F72B7;
+    color: #4f72b7;
   }
   span.k {
-    color: #9F3D96;
+    color: #9f3d96;
   }
   span.no {
     color: #000000;
   }
   span.mi {
-    color: #976B29;
+    color: #976b29;
   }
 
   &.console {
@@ -28,21 +29,23 @@
   }
 
   code.language-javascript {
-    span.nx, span.err {
-      color: #E45546;
+    span.nx,
+    span.err {
+      color: #e45546;
       background-color: white;
     }
     span.kr {
-      color: #4F72B7;
+      color: #4f72b7;
     }
     span.mi {
-      color: #9F3D96;
+      color: #9f3d96;
     }
-    span.kd, span.k {
-      color: #51A24D;
+    span.kd,
+    span.k {
+      color: #51a24d;
     }
     span.s2 {
-      color: #4D70B6;
+      color: #4d70b6;
     }
   }
 }

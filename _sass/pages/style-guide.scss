@@ -5,14 +5,16 @@
 
 .styleguide {
   display: grid;
-  grid-template-areas: "head     code"
-                       "rendered code";
+  grid-template-areas:
+    "head     code"
+    "rendered code";
   grid-template-columns: 50% 50%;
   grid-template-rows: auto 1fr;
 
-  @media(max-width: 1200px) {
-    grid-template-areas: "head"
-                         "rendered";
+  @media (max-width: 1200px) {
+    grid-template-areas:
+      "head"
+      "rendered";
 
     grid-template-columns: 1fr;
     &__code {
@@ -63,10 +65,12 @@
     > .highlight {
       border: none;
       padding: 0;
-      font-size: .9em;
+      font-size: 0.9em;
 
-      &, > :first-child {
-        &::before, &::after {
+      &,
+      > :first-child {
+        &::before,
+        &::after {
           content: none;
         }
       }
