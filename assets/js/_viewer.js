@@ -1,33 +1,41 @@
 function Viewer3D(container) {
-
   var _container = container;
   var self = this;
   self.width = _container.width;
   self.height = _container.height;
 
-  var _vertices, _faces, _canvas, _shader, _req, _renderInterval, _dragging, _container;
+  var _vertices,
+    _faces,
+    _canvas,
+    _shader,
+    _req,
+    _renderInterval,
+    _dragging,
+    _container;
   var _min = 0.01;
   var _yaw = _min;
   var _pitch = _min;
   var _distance = 4;
   var _scale = self.width * (4 / 3);
-  var _r = [[1, 0, 0],
-            [0, 1, 0],
-            [0, 0, 1]];
+  var _r = [
+    [1, 0, 0],
+    [0, 1, 0],
+    [0, 0, 1],
+  ];
   var _loaded = false;
   var _start;
   var _contrast = 0;
 
-  self.insertModel = function(url) {
+  self.insertModel = function (url) {
     window.clearInterval(_renderInterval);
     _renderInterval = undefined;
     _container.addEventListener("mousedown", mouseDownHandler, false);
     _canvas = _container.getContext("2d");
     fetchXML(url);
-  }
+  };
 
-  self.shader = function(id, r, g, b) {
-    switch(id) {
+  self.shader = function (id, r, g, b) {
+    switch (id) {
       case "transparent":
         _shader = new TransparentShader(r, g, b);
         break;
@@ -35,22 +43,22 @@ function Viewer3D(container) {
         _shader = new FlatShader(r, g, b);
         break;
     }
-  }
+  };
 
-  self.toScreenX = function(x, z) {
-    return self.width / 2 + _scale * x / (_distance - z);
-  }
+  self.toScreenX = function (x, z) {
+    return self.width / 2 + (_scale * x) / (_distance - z);
+  };
 
-  self.toScreenY = function(y, z) {
-    return self.height / 2 + _scale * y / (_distance - z);
-  }
+  self.toScreenY = function (y, z) {
+    return self.height / 2 + (_scale * y) / (_distance - z);
+  };
 
-  self.contrast = function(value) {
-    if(value == null) {
+  self.contrast = function (value) {
+    if (value == null) {
       return _contrast;
     }
     _contrast = Math.max(-1, Math.min(1, value));
-  }
+  };
 
   //Geometry
 
@@ -58,14 +66,18 @@ function Viewer3D(container) {
     var x = point3D.x * _r[0][0] + point3D.y * _r[0][1] + point3D.z * _r[0][2];
     var y = point3D.x * _r[1][0] + point3D.y * _r[1][1] + point3D.z * _r[1][2];
     var z = point3D.x * _r[2][0] + point3D.y * _r[2][1] + point3D.z * _r[2][2];
-    return {x:x, y:y, z:z};
+    return { x: x, y: y, z: z };
   }
 
   function matrixMultiply(a, b) {
-    var matrix = [[0,0,0], [0,0,0], [0,0,0]];
-    for(var i = 0; i < 3; i++) {
-      for(var j = 0; j < 3; j++) {
-        for(var k = 0; k < 3; k++) {
+    var matrix = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+    ];
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
+        for (var k = 0; k < 3; k++) {
           matrix[i][j] += a[i][k] * b[k][j];
         }
       }
@@ -74,25 +86,25 @@ function Viewer3D(container) {
   }
 
   function transformVertices() {
-    for(var i = 0; i < _vertices.length; i++) {
+    for (var i = 0; i < _vertices.length; i++) {
       var vertex = _vertices[i];
       var xp = vertex.x * _r[0][0] + vertex.y * _r[0][1] + vertex.z * _r[0][2];
       var yp = vertex.x * _r[1][0] + vertex.y * _r[1][1] + vertex.z * _r[1][2];
       var zp = vertex.x * _r[2][0] + vertex.y * _r[2][1] + vertex.z * _r[2][2];
-      vertex.screenX = self.width / 2 + _scale * xp / (_distance - zp);
-      vertex.screenY = self.height / 2 + _scale * yp / (_distance - zp);
+      vertex.screenX = self.width / 2 + (_scale * xp) / (_distance - zp);
+      vertex.screenY = self.height / 2 + (_scale * yp) / (_distance - zp);
     }
   }
 
   function render() {
-    _canvas.clearRect(0 , 0, self.width, self.height);
+    _canvas.clearRect(0, 0, self.width, self.height);
     transformVertices();
     rotateVectors();
     _shader.render();
   }
 
   function rotateVectors() {
-    for(var i = 0; i < _faces.length; i++) {
+    for (var i = 0; i < _faces.length; i++) {
       var face = _faces[i];
       face.transform = new Object();
       face.transform.normal = rotate(face.normal);
@@ -102,11 +114,12 @@ function Viewer3D(container) {
 
   function sortByNormal() {
     var order = new Array();
-    for(var i = 0; i < _faces.length; i++) {
+    for (var i = 0; i < _faces.length; i++) {
       order[i] = i;
     }
     order.sort(function (a, b) {
-      var deltaNormal = _faces[b].transform.normal.z - _faces[a].transform.normal.z;
+      var deltaNormal =
+        _faces[b].transform.normal.z - _faces[a].transform.normal.z;
       if (deltaNormal > 0) {
         return -1;
       } else if (deltaNormal < 0) {
@@ -119,8 +132,8 @@ function Viewer3D(container) {
   }
 
   function computeCentroid(face) {
-    var centroid = {x:0, y:0, z:0};
-    for(var i = 0; i < face.vertices.length; i++) {
+    var centroid = { x: 0, y: 0, z: 0 };
+    for (var i = 0; i < face.vertices.length; i++) {
       var id = face.vertices[i];
       var vertex = _vertices[id];
       centroid.x += vertex.x;
@@ -133,8 +146,8 @@ function Viewer3D(container) {
     return centroid;
   }
 
-  function computeCentroids () {
-    for(var i = 0; i < _faces.length; i++) {
+  function computeCentroids() {
+    for (var i = 0; i < _faces.length; i++) {
       var face = _faces[i];
       face.centroid = computeCentroid(face);
     }
@@ -144,18 +157,32 @@ function Viewer3D(container) {
     var vertex0 = _vertices[face.vertices[0]];
     var vertex1 = _vertices[face.vertices[1]];
     var vertex2 = _vertices[face.vertices[2]];
-    var a = {x:vertex1.x - vertex0.x, y:vertex1.y - vertex0.y, z:vertex1.z - vertex0.z};
-    var b = {x:vertex2.x - vertex0.x, y:vertex2.y - vertex0.y, z:vertex2.z - vertex0.z};
+    var a = {
+      x: vertex1.x - vertex0.x,
+      y: vertex1.y - vertex0.y,
+      z: vertex1.z - vertex0.z,
+    };
+    var b = {
+      x: vertex2.x - vertex0.x,
+      y: vertex2.y - vertex0.y,
+      z: vertex2.z - vertex0.z,
+    };
     var normal = new Object();
     normal.x = a.y * b.z - a.z * b.y;
     normal.y = a.z * b.x - a.x * b.z;
     normal.z = a.x * b.y - a.y * b.x;
-    var magnitude = Math.sqrt(normal.x * normal.x + normal.y * normal.y + normal.z * normal.z);
+    var magnitude = Math.sqrt(
+      normal.x * normal.x + normal.y * normal.y + normal.z * normal.z
+    );
     normal.x /= magnitude;
     normal.y /= magnitude;
     normal.z /= magnitude;
-    var flip = normal.x * face.centroid.x + normal.y * face.centroid.y + normal.z * face.centroid.z < 0;
-    if(flip) {
+    var flip =
+      normal.x * face.centroid.x +
+        normal.y * face.centroid.y +
+        normal.z * face.centroid.z <
+      0;
+    if (flip) {
       normal.x = -normal.x;
       normal.y = -normal.y;
       normal.z = -normal.z;
@@ -163,18 +190,32 @@ function Viewer3D(container) {
     return normal;
   }
 
-  function computeNormals () {
-    for(var i = 0; i < _faces.length; i++) {
+  function computeNormals() {
+    for (var i = 0; i < _faces.length; i++) {
       var face = _faces[i];
       face.normal = computeNormal(face);
     }
   }
 
   function animate() {
-    _r = matrixMultiply([[Math.cos(_yaw), 0, -Math.sin(_yaw)],[0, 1, 0],[Math.sin(_yaw), 0, Math.cos(_yaw)]], _r);
-    _r = matrixMultiply([[1, 0, 0], [0, Math.cos(_pitch), -Math.sin(_pitch)], [0, Math.sin(_pitch), Math.cos(_pitch)]], _r);
+    _r = matrixMultiply(
+      [
+        [Math.cos(_yaw), 0, -Math.sin(_yaw)],
+        [0, 1, 0],
+        [Math.sin(_yaw), 0, Math.cos(_yaw)],
+      ],
+      _r
+    );
+    _r = matrixMultiply(
+      [
+        [1, 0, 0],
+        [0, Math.cos(_pitch), -Math.sin(_pitch)],
+        [0, Math.sin(_pitch), Math.cos(_pitch)],
+      ],
+      _r
+    );
     render();
-    if(_dragging) {
+    if (_dragging) {
       _yaw = 0;
       _pitch = 0;
     } else {
@@ -182,19 +223,19 @@ function Viewer3D(container) {
       _yaw = decelerate(_yaw, restart);
       _pitch = decelerate(_pitch, restart);
     }
-    if(_renderInterval == undefined) {
-     _renderInterval = window.setInterval(animate, 20);
+    if (_renderInterval == undefined) {
+      _renderInterval = window.setInterval(animate, 20);
     }
   }
 
   function decelerate(value, restart) {
     if (restart) {
-      return 0.0001 * (Math.round(Math.random())? 1 : -1);
-    } else if(Math.abs(value) < _min) {
+      return 0.0001 * (Math.round(Math.random()) ? 1 : -1);
+    } else if (Math.abs(value) < _min) {
       value *= 1.01;
     } else {
       value *= 0.99;
-       if(value < 0) {
+      if (value < 0) {
         value = Math.min(value, -_min);
       } else {
         value = Math.max(value, _min);
@@ -209,12 +250,19 @@ function Viewer3D(container) {
     var _stroke = "rgb(" + r + "," + g + "," + b + ")";
     this.render = function () {
       var edges = new Array();
-      for(var i = 0; i < _faces.length; i++) {
+      for (var i = 0; i < _faces.length; i++) {
         var face = _faces[i];
-        var isFrontface = face.transform.centroid.x * face.transform.normal.x + face.transform.centroid.y * face.transform.normal.y + (face.transform.centroid.z -_distance) * face.transform.normal.z < 0;
-        for(var j = 0; j < face.vertices.length; j++) {
+        var isFrontface =
+          face.transform.centroid.x * face.transform.normal.x +
+            face.transform.centroid.y * face.transform.normal.y +
+            (face.transform.centroid.z - _distance) * face.transform.normal.z <
+          0;
+        for (var j = 0; j < face.vertices.length; j++) {
           var a = face.vertices[j];
-          var b = j + 1 < face.vertices.length? face.vertices[j + 1] : face.vertices[0];
+          var b =
+            j + 1 < face.vertices.length
+              ? face.vertices[j + 1]
+              : face.vertices[0];
           var key = Math.min(a, b) + " " + Math.max(a, b);
           edges[key] = edges[key] || isFrontface;
         }
@@ -224,14 +272,14 @@ function Viewer3D(container) {
       for (var key in edges) {
         var ids = key.split(" ");
         var isFrontface = edges[key];
-        _canvas.lineWidth = isFrontface? 0.5 : 0.1;
+        _canvas.lineWidth = isFrontface ? 0.5 : 0.1;
         _canvas.beginPath();
         _canvas.moveTo(_vertices[ids[0]].screenX, _vertices[ids[0]].screenY);
         _canvas.lineTo(_vertices[ids[1]].screenX, _vertices[ids[1]].screenY);
         _canvas.closePath();
         _canvas.stroke();
       }
-    }
+    };
   }
 
   function FlatShader(r, g, b) {
@@ -242,33 +290,55 @@ function Viewer3D(container) {
       var r = 0;
       var g = 0;
       var b = 0;
-      for(var i = 0; i < _lights.length; i++) {
-        var cos = face.transform.normal.x * _lights[i].x + face.transform.normal.y * _lights[i].y + face.transform.normal.z * _lights[i].z;
+      for (var i = 0; i < _lights.length; i++) {
+        var cos =
+          face.transform.normal.x * _lights[i].x +
+          face.transform.normal.y * _lights[i].y +
+          face.transform.normal.z * _lights[i].z;
         //if(cos > 0) {
-        r = Math.max(0, Math.min(255, Math.round(applyContrast(r + cos * _lights[i].r, _contrast))));
-        g = Math.max(0, Math.min(255, Math.round(applyContrast(g + cos * _lights[i].g, _contrast))));
-        b = Math.max(0, Math.min(255, Math.round(applyContrast(b + cos * _lights[i].b, _contrast))));
+        r = Math.max(
+          0,
+          Math.min(
+            255,
+            Math.round(applyContrast(r + cos * _lights[i].r, _contrast))
+          )
+        );
+        g = Math.max(
+          0,
+          Math.min(
+            255,
+            Math.round(applyContrast(g + cos * _lights[i].g, _contrast))
+          )
+        );
+        b = Math.max(
+          0,
+          Math.min(
+            255,
+            Math.round(applyContrast(b + cos * _lights[i].b, _contrast))
+          )
+        );
         //}
       }
-      var value = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).substring(1);
+      var value =
+        "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).substring(1);
       return value;
     };
 
     this.render = function () {
       var order = sortByNormal();
-      for(var i = 0; i < order.length; i++) {
+      for (var i = 0; i < order.length; i++) {
         var face = _faces[order[i]];
         var isBackface = face.transform.normal.z <= 0;
-        if(!isBackface) {
+        if (!isBackface) {
           var color = this.fill(face);
           _canvas.strokeStyle = color;
           _canvas.fillStyle = color;
           _canvas.lineWidth = 0.5;
           _canvas.beginPath();
-          for(var j = 0; j < face.vertices.length; j++) {
+          for (var j = 0; j < face.vertices.length; j++) {
             var id = face.vertices[j];
             var vertex = _vertices[id];
-            if(!j) {
+            if (!j) {
               _canvas.moveTo(vertex.screenX, vertex.screenY);
             }
             _canvas.lineTo(vertex.screenX, vertex.screenY);
@@ -278,7 +348,7 @@ function Viewer3D(container) {
           _canvas.stroke();
         }
       }
-    }
+    };
   }
 
   function Light(x, y, z, r, g, b) {
@@ -293,7 +363,7 @@ function Viewer3D(container) {
 
   function applyContrast(channel, contrast) {
     var value = channel / 255 - 0.5;
-    if(contrast > 0) {
+    if (contrast > 0) {
       return (value / (1 - contrast) + 0.5) * 255;
     } else {
       return (value * (1 + contrast) + 0.5) * 255;
@@ -304,9 +374,9 @@ function Viewer3D(container) {
 
   function fetchXML(url) {
     _req = getXMLRequestObject();
-    _req.onreadystatechange = function() {
+    _req.onreadystatechange = function () {
       loadGeometry();
-    }
+    };
     _req.open("GET", url, true);
     _req.send("");
   }
@@ -324,11 +394,11 @@ function Viewer3D(container) {
           vertex.z = Number(vertices[i].getAttribute("z"));
           _vertices[i] = vertex;
         }
-        var faces = xml.getElementsByTagName('f');
+        var faces = xml.getElementsByTagName("f");
         _faces = new Array();
         for (var i = 0; i < faces.length; i++) {
-          _faces[i] = {vertices:new Array()};
-          for(j = 0; j < faces[i].childNodes.length; j++) {
+          _faces[i] = { vertices: new Array() };
+          for (j = 0; j < faces[i].childNodes.length; j++) {
             _faces[i].vertices[j] = faces[i].childNodes[j].firstChild.nodeValue;
           }
         }
@@ -355,7 +425,7 @@ function Viewer3D(container) {
     var x = event.clientX - bounds.left;
     var y = event.clientY - bounds.top;
     _dragging = true;
-    _last = {point:{x:x, y:y}};
+    _last = { point: { x: x, y: y } };
     window.addEventListener("mousemove", mouseMoveHandler, false);
     window.addEventListener("mouseup", mouseUpHandler, false);
   }
@@ -370,10 +440,14 @@ function Viewer3D(container) {
     var bounds = _container.getBoundingClientRect();
     var x = event.clientX - bounds.left;
     var y = event.clientY - bounds.top;
-    var depth = _scale  / _distance / 4;
-    _yaw = Math.atan2(_last.point.x - self.width / 4 , depth) - Math.atan2(x - self.width / 4 , depth);
-    _pitch = Math.atan2(_last.point.y - self.height / 4, depth) - Math.atan2(y - self.height / 4, depth);
-    _last = {point:{x:x, y:y}};
+    var depth = _scale / _distance / 4;
+    _yaw =
+      Math.atan2(_last.point.x - self.width / 4, depth) -
+      Math.atan2(x - self.width / 4, depth);
+    _pitch =
+      Math.atan2(_last.point.y - self.height / 4, depth) -
+      Math.atan2(y - self.height / 4, depth);
+    _last = { point: { x: x, y: y } };
   }
 
   self.shader("flat", 200, 200, 200);
