@@ -12,27 +12,23 @@ collections:
     output: false
 
 defaults:
-
   # This is a duplication of the next scope, but with index file name.
   # It ensures that index files are treated as a directory index, and generate sub paths.
-  -
-    scope:
+  - scope:
       path: "**/index{.html,.md}"
       type: pages
     values:
       image: /assets/icon.png
       layout: page
       permalink: /:path/
-  -
-    scope:
+  - scope:
       path: "**/*{.html,.md}"
       type: pages
     values:
       image: /assets/icon.png
       layout: page
       permalink: /:path/:basename/
-  -
-    scope:
+  - scope:
       path: ""
       type: posts
     values:
@@ -40,8 +36,7 @@ defaults:
       layout: post
       permalink: /:year/:month/:day/:title/
       is_post: true
-  -
-    scope:
+  - scope:
       path: "install"
       type: pages
     values:
@@ -61,17 +56,17 @@ twitter:
   username: CrystalLanguage
 
 exclude:
-- "*.nix"
-- docker-compose.yml
-- docker-compose.*.yml
-- Gemfile
-- Gemfile.lock
-- Makefile
-- Rakefile
-- README.md
-- /scripts/
-- vendor
-- netlify.toml
+  - "*.nix"
+  - docker-compose.yml
+  - docker-compose.*.yml
+  - Gemfile
+  - Gemfile.lock
+  - Makefile
+  - Rakefile
+  - README.md
+  - /scripts/
+  - vendor
+  - netlify.toml
 
 highlighter: rouge
 markdown: kramdown
