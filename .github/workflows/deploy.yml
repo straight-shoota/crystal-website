@@ -6,23 +6,21 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-22.04
+    env:
+      NOKOGIRI_USE_SYSTEM_LIBRARIES: true
     steps:
       - name: Download source
         uses: actions/checkout@v2
-      - name: Cache dependencies
-        uses: actions/cache@v2
+      - uses: ruby/setup-ruby@v1
         with:
-          path: |
-            ~/.cache/bundle
-            tmp/.htmlproofer
-          key: gem-${{ hashFiles('Gemfile.lock') }}
-          restore-keys: gem-
+          ruby-version: '3.0'
+          bundler-cache: true
       - name: Build website
-        run: |
-          mv docker-compose.ci.yml docker-compose.override.yml
-          docker-compose run --rm web /bin/bash -c "bundle check || bundle install --jobs=3"
-          docker-compose run --rm web make check_html
-          docker-compose run --rm web /bin/bash -c "make check_external_links || true" # allowed to fail
+        run: make build
+      - name: Check HTML
+        run: make check_html
+      - name: Check external links
+        run: make check_external_links || true # allowed to fail
       - name: Configure AWS Credentials
         if: github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository_owner == 'crystal-lang'
         uses: aws-actions/configure-aws-credentials@v1
