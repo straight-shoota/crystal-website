@@ -21,15 +21,26 @@ jobs:
         run: make check_html
       - name: Check external links
         run: make check_external_links || true # allowed to fail
+      - uses: actions/upload-artifact@v2
+        with:
+          name: site
+          path: _site
+  deploy:
+    name: Deploy
+    needs: build
+    if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository_owner == 'crystal-lang' }}
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/upload-artifact@v2
+        with:
+          name: site
       - name: Configure AWS Credentials
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository_owner == 'crystal-lang'
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy to www.crystal-lang.org
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository_owner == 'crystal-lang'
         run: |
           aws s3 sync ./_site s3://crystal-website --delete
           ./scripts/set-legacy-url-redirects.bash crystal-website < ./_data/legacy_non_pretty_urls.txt
