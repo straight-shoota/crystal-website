@@ -32,7 +32,8 @@ jobs:
           key: gem-${{ hashFiles('Gemfile.lock') }}
           restore-keys: gem-
       - name: Build website
-        run: devenv shell make build
+        shell: devenv shell {0}
+        run: make build
       - name: Restore lycheecache
         id: lycheecache
         uses: actions/cache/restore@v6
@@ -40,7 +41,8 @@ jobs:
             path: .lycheecache
             key: lycheecache
       - name: Test links
-        run: devenv shell make check_all_links
+        shell: devenv shell {0}
+        run: make check_all_links
       - name: Save lycheecache
         uses: actions/cache/save@v6
         with:
